@@ -1,8 +1,4 @@
-type InputProps = {
-  type: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-};
+import { InputProps } from "../../types";
 
 export default function Input(props: InputProps) {
   return (

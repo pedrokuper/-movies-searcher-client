@@ -1,17 +1,12 @@
 import style from "./movieCard.module.scss";
-
-type MovieCardProps = {
-  image: string;
-  title: string;
-  year: string;
-};
+import { MovieCardProps } from "../../types";
 
 export default function MovieCard(props: MovieCardProps) {
   return (
     <article className={style.container}>
       <div className={style.header}>
         <h4>{props.title}</h4>
-        <span>({props.year})</span>
+        <span>({new Date(props.year).getFullYear().toString()})</span>
       </div>
       <img src={props.image} alt={props.title} />
     </article>
