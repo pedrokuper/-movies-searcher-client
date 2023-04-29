@@ -4,7 +4,7 @@ _Crea una apticación para buscar peliculas_
 
 ### Requerimientos:
 
-— Necesita mostrar un input para buscar Ia pelicula y un bot6n para buscar.
+— Necesita mostrar un input para buscar Ia película y un botón para buscar.
 
 — Lista las peticutas encontradas y muestra el tituto, año y poster.
 

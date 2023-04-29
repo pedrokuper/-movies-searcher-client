@@ -1,8 +1,8 @@
 type InputProps = {
-  value: string;
   type: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function Input(props: InputProps) {
-  return <input type={props.type} />;
+export default function Input(props: InputProps) {
+  return <input onChange={props.onChange} type={props.type} />;
 }
