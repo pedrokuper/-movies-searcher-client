@@ -49,7 +49,6 @@ function App() {
       handleResults();
     }
   }, [data, handleResults]);
-  console.log(!!results.length);
 
   return (
     <>
@@ -63,11 +62,17 @@ function App() {
         />
         {!!results.length && <h2>Resultados</h2>}
       </div>
-      <div>
+      <div className={style.btnContainer}>
         {!!results.length &&
           pages.map((page: number, key: number) => {
             return (
-              <button key={key} onClick={() => setActivePage(page)}>
+              <button
+                className={`${style.btn}  ${
+                  page === activePage && style.activePage
+                }`}
+                key={key}
+                onClick={() => setActivePage(page)}
+              >
                 {page}
               </button>
             );
@@ -76,11 +81,11 @@ function App() {
       <div>
         {!results.length && search && !isLoading && (
           <p style={{ textAlign: "center" }}>
-            No hay resultados para el término {search}
+            No hay resultados para el término <strong>{search}</strong>
           </p>
         )}
       </div>
-      {!results.length && isLoading && search && (
+      {isLoading && search && (
         <div style={{ textAlign: "center" }}>
           <Spinner />
         </div>

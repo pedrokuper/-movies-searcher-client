@@ -15,14 +15,15 @@ export default function useFetch<T>(
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = useCallback(async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(url);
       const json = await response.json();
+
       setData(json);
+      setIsLoading(false);
     } catch (error) {
       setError(error);
-    } finally {
-      setIsLoading(false);
     }
   }, [url]);
 
