@@ -1,7 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
+
 import style from "./app.module.scss";
 import Input from "./components/Input/index";
 import MovieCard from "./components/MovieCard/index";
+
 function App() {
   const { API_KEY } = process.env;
   const [search, setSearch] = useState("");
@@ -10,6 +12,10 @@ function App() {
   function handleChange(e: React.FormEvent<HTMLInputElement>): void {
     setSearch(e.currentTarget.value);
   }
+
+  //TODO Move fetch to customHook
+  //TODO - Add language selector for search terms
+  //TODO - Add useMemo to avoid searching results if the searchTerm is the same
 
   const fetchData = async (searchTerm: string) => {
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`;
