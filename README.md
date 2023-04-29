@@ -6,7 +6,7 @@ _Crea una apticación para buscar peliculas_
 
 — Necesita mostrar un input para buscar Ia película y un botón para buscar. OK
 
-— Lista las peticutas encontradas y muestra el tituto, año y poster.
+— Lista las peticutas encontradas y muestra el tituto, año y poster. OK
 
 — Haz que tas peticutas se muestren en un grid responsive.
 

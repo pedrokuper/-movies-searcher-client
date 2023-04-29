@@ -1,3 +1,5 @@
+import style from "./movieCard.module.scss";
+
 type MovieCardProps = {
   image: string;
   title: string;
@@ -6,12 +8,12 @@ type MovieCardProps = {
 
 export default function MovieCard(props: MovieCardProps) {
   return (
-    <div>
-      <div>
+    <article className={style.container}>
+      <div className={style.header}>
         <h4>{props.title}</h4>
-        <span>{props.year}</span>
+        <span>({props.year})</span>
       </div>
       <img src={props.image} alt={props.title} />
-    </div>
+    </article>
   );
 }
