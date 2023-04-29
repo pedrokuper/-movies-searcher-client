@@ -8,7 +8,7 @@ export default function MovieCard(props: MovieCardProps) {
         <h4>{props.title}</h4>
         <span>({new Date(props.year).getFullYear().toString()})</span>
       </div>
-      <img src={props.image} alt={props.title} />
+      <img loading="lazy" src={props.image} alt={props.title} />
     </article>
   );
 }
