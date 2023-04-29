@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import style from "./app.module.scss";
 import Input from "./components/Input/index";
@@ -15,11 +15,11 @@ function App() {
 
   //TODO Move fetch to customHook
   //TODO - Add language selector for search terms
-  //TODO - Add useMemo to avoid searching results if the searchTerm is the same
 
-  const fetchData = async (searchTerm: string) => {
-    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${searchTerm}`;
+  const fetchData = useCallback(async () => {
+    console.log("fetchData called with searchTerm:", search);
 
+    const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${search}`;
     const data = await fetch(URL);
     const { results } = await data.json();
 
@@ -34,17 +34,20 @@ function App() {
       });
 
     setResults(newData);
-  };
+    console.log("fetchData executed");
+  }, [search, API_KEY]);
 
   useEffect(() => {
-    if (search) {
-      setTimeout(() => {
-        fetchData(search);
-      }, 2000);
+    const timer = setTimeout(() => {
+      if (search) {
+        fetchData();
+      }
+    }, 2000);
 
-      return () => clearTimeout(fetchData);
-    }
-  }, [search, API_KEY]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [fetchData, search]);
 
   return (
     <>
