@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import Input from "./components/Input/index";
 function App() {
   const [search, setSearch] = useState("");
-  //https://api.themoviedb.org/3/search/movie?api_key=07b5bfd0807671be96d74ea73e7d41b1&language=en-US&page=1&include_adult=false&query=harry%potter
+  const [results, setResults] = useState([]);
+
   const { API_KEY } = process.env;
   function handleChange(e: React.FormEvent<HTMLInputElement>): void {
     setSearch(e.currentTarget.value);
@@ -21,6 +22,8 @@ function App() {
     }
   }, [search, API_KEY]);
 
+  //TODO Lista las peticutas encontradas y muestra el tituto, año y poster.
+
   return (
     <>
       <h1>Buscador de películas</h1>
@@ -28,6 +31,8 @@ function App() {
         onChange={(e: React.FormEvent<HTMLInputElement>) => handleChange(e)}
         type="text"
       />
+      <h2>Resultados</h2>
+      <div></div>
     </>
   );
 }
